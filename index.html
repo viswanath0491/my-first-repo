@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(circle at top, #111 0%, #000 65%, #000 100%);
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .top-bar {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      color: #111;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #111;
+      background: none;
+      -webkit-background-clip: unset;
+      -webkit-text-fill-color: unset;
+      background-clip: unset;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links li a {
+      color: #111;
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links li a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links li a:hover::after {
+      width: 100%;
+    }
+
+    main {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .hero {
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-content {
+      animation: slideInLeft 1s ease-out;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      color: #fff;
+      line-height: 1.2;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .hero-content .subtitle {
+      font-size: 1.3rem;
+      color: #e0e0e;
+      margin-bottom: 30px;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    .hero-content p {
+      font-size: 1rem;
+      color: #ddd;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      animation: fadeInUp 0.8s ease-out 0.4s both;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 12px 40px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+      animation: fadeInUp 0.8s ease-out 0.6s both;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+    }
+
+    .profile-container {
+      perspective: 1000px;
+      animation: slideInRight 1s ease-out;
+    }
+
+    .profile-card {
+      width: 100%;
+      max-width: 400px;
+      height: 500px;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .profile-card:hover {
+      animation: rotate3d 0.6s ease-out forwards;
+    }
+
+    .profile-card-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+
+    .profile-card.flipped .profile-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .profile-front, .profile-back {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .profile-back {
+      background: linear-gradient(135deg, #320cb1, #f5576c);
+      color: white;
+      transform: rotateY(180deg);
+    }
+
+    .profile-front {
+      background-image: linear-gradient(to bottom, rgba(0,0,0,0.12), rgba(0,0,0,0.75)), url('Gemini_Generated_Image_mtolppmtolppmtol.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: brightness(1.15);
+      color: white;
+      justify-content: flex-end;
+      padding-bottom: 40px;
+    }
+
+    .profile-front::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.55) 100%);
+      border-radius: 20px;
+      pointer-events: none;
+    }
+
+    .profile-front h2 {
+      font-size: 2rem;
+      margin: 20px 0 10px;
+    }
+
+    .profile-front .role {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 30px;
+    }
+
+    .profile-back h3 {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+    }
+
+    .profile-back p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      opacity: 0.95;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px) rotateX(0deg) rotateY(5deg);
+      }
+      50% {
+        transform: translateY(-20px) rotateX(2deg) rotateY(10deg);
+      }
+    }
+
+    @keyframes rotate3d {
+      0% {
+        transform: rotateX(0deg) rotateY(0deg) scale(1);
+      }
+      50% {
+        transform: rotateX(10deg) rotateY(10deg) scale(1.05);
+      }
+      100% {
+        transform: rotateX(0deg) rotateY(0deg) scale(1);
+      }
+    }
+
+    .flip-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid white;
+      color: white;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .flip-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .nav-links {
+        gap: 15px;
+        font-size: 0.9rem;
+      }
+
+      .top-bar {
+        padding: 15px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="top-bar">
+    <div class="logo">Portfolio</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="project.html">Project</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Hi, I'm Viswanath</h1>
+        <p class="subtitle">Full Stack Developer & AI/ML Enthusiast</p>
+        <p>B.Tech graduate in Artificial Intelligence & Machine Learning with a passion for building innovative solutions. I specialize in full-stack development and love solving real-world problems through code.</p>
+        <p>Currently exploring opportunities to leverage my skills in software engineering, web development, and machine learning to create impactful projects.</p>
+        <a href="contact.html" class="cta-button">Get In Touch</a>
+      </div>
+
+      <div class="profile-container">
+        <div class="profile-card" id="profileCard">
+          <div class="profile-card-inner">
+            <div class="profile-front">
+              <h2>Viswanath D</h2>
+              <p class="role">Software Developer</p>
+              <p style="font-size: 0.85rem; opacity: 0.8;">Click card to reveal more →</p>
+              <button class="flip-btn" onclick="flipCard()">Learn More</button>
+            </div>
+            <div class="profile-back">
+              <h3>About Me</h3>
+              <p>Full Stack Developer with expertise in C, C++, Java, Python, JavaScript, and web technologies. Passionate about creating elegant solutions to complex problems and continuously learning new technologies.</p>
+              <button class="flip-btn" onclick="flipCard()">← Back</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function flipCard() {
+      const card = document.getElementById('profileCard');
+      card.classList.toggle('flipped');
+    }
+  </script>
+</body>
+</html>

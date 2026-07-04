@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | Portfolio</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: radial-gradient(circle at top, #111 0%, #000 65%, #000 100%); color: #fff; min-height: 100vh; }
+    .top-bar { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); color: #111; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); }
+    .logo { font-size: 1.8rem; font-weight: 700; color: #111; background: none; -webkit-background-clip: unset; -webkit-text-fill-color: unset; background-clip: unset; }
+    .nav-links { display: flex; gap: 30px; list-style: none; }
+    .nav-links a { color: #111; text-decoration: none; font-weight: 600; position: relative; transition: all 0.3s ease; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: linear-gradient(135deg, #667eea, #764ba2); transition: width 0.3s ease; }
+    .nav-links a:hover::after { width: 100%; }
+    .content { padding: 60px 40px; max-width: 1200px; margin: auto; }
+    .content h1 { font-size: 2.5rem; color: #fff; margin-bottom: 40px; text-align: center; animation: fadeInDown 0.8s ease-out; }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    .project-card { background: rgba(255, 255, 255, 0.95); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); transition: all 0.3s ease; animation: fadeInUp 0.8s ease-out; }
+    .project-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); }
+    .project-header { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 30px; text-align: center; min-height: 120px; display: flex; flex-direction: column; justify-content: center; }
+    .project-header h3 { font-size: 1.4rem; margin-bottom: 10px; }
+    .project-header .emoji { font-size: 2rem; margin-bottom: 10px; }
+    .project-body { padding: 20px; }
+    .project-body p { color: #666; line-height: 1.6; margin-bottom: 15px; }
+    .project-body .tech { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+    .tech-tag { background: #e8eaf6; color: #667eea; padding: 4px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: 600; }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 768px) { .content { padding: 40px 20px; } .content h1 { font-size: 2rem; } }
+  </style>
+</head>
+<body>
+  <header class="top-bar">
+    <div class="logo">portfolio</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="project.html">Project</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="content">
+    <h1>My Projects</h1>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-header">
+          <div class="emoji">🤖</div>
+          <h3>AI-Based Object Detection</h3>
+        </div>
+        <div class="project-body">
+          <p>Developed an advanced object detection system using YOLO and Python for real-time detection with web integration capabilities.</p>
+          <div class="tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">YOLO</span>
+            <span class="tech-tag">AI/ML</span>
+            <span class="tech-tag">Web Integration</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="emoji">🗳️</div>
+          <h3>Online Voting System</h3>
+        </div>
+        <div class="project-body">
+          <p>Built a secure online voting platform with user authentication, voting functionality, and Bootstrap UI. Features secure login mechanisms.</p>
+          <div class="tech">
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">PHP</span>
+            <span class="tech-tag">Bootstrap</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="emoji">🌐</div>
+          <h3>Portfolio Website</h3>
+        </div>
+        <div class="project-body">
+          <p>A modern, responsive portfolio website with 3D animations, gradient designs, and smooth transitions for an enhanced user experience.</p>
+          <div class="tech">
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">3D Animations</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="emoji">📊</div>
+          <h3>Data Analysis Tools</h3>
+        </div>
+        <div class="project-body">
+          <p>Developed data analysis and visualization tools for processing large datasets with SQL and Excel.</p>
+          <div class="tech">
+            <span class="tech-tag">SQL</span>
+            <span class="tech-tag">Excel</span>
+            <span class="tech-tag">Data Analysis</span>
+            <span class="tech-tag">Visualization</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="emoji">🔧</div>
+          <h3>Java Applications</h3>
+        </div>
+        <div class="project-body">
+          <p>Object-oriented programming projects and software development using Java with emphasis on design patterns and architecture.</p>
+          <div class="tech">
+            <span class="tech-tag">Java</span>
+            <span class="tech-tag">OOP</span>
+            <span class="tech-tag">Design Patterns</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="emoji">⚙️</div>
+          <h3>C++ Projects</h3>
+        </div>
+        <div class="project-body">
+          <p>System-level programming projects and algorithms implementation using C++ for performance-critical applications.</p>
+          <div class="tech">
+            <span class="tech-tag">C++</span>
+            <span class="tech-tag">Algorithms</span>
+            <span class="tech-tag">System Programming</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
