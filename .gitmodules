@@ -1,0 +1,2 @@
+[submodule "my-first-repo"]
+	url = https://github.com/your-username/your-submodule-repo.git
